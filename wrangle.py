@@ -1,7 +1,8 @@
-# needed modules:
+# required modules:
 import os
-import pymysql
 import pandas as pd
+import numpy as np
+
 import env 
 from env import user, password, host
 
@@ -27,30 +28,28 @@ def get_telco_data():
 
 
 def clean_telco_data(df):
+    # converting columns to proper type 
     df["total_charges"] = pd.to_numeric(df["total_charges"], errors="coerce")
+    df["senior_citizen"] = df["senior_citizen"].astype("bool")
+
+    # replacing null values in total charges column
     filling_values = df[df.isnull().any(axis=1)].monthly_charges
     df["total_charges"] = df["total_charges"].fillna(df["monthly_charges"])
+
+    # dropping unneeded columns
     df = df.drop(columns=['internet_service_type_id', 'payment_type_id', 'contract_type_id'])
-    df["senior_citizen"] = df["senior_citizen"].replace({0: "No", 1: "Yes"})
-    categorical_lst = ['internet_service_type', \ 
-       'payment_type', \
-       'contract_type', \
-       'gender', \
-       'senior_citizen', \
-       'partner', \
-       'dependents', \
-       'phone_service', \
-       'multiple_lines', \
-       'online_security', \
-       'online_backup', \
-       'device_protection', \
-       'tech_support', \
-       'streaming_tv', \
-       'streaming_movies', \
-       'paperless_billing']
-    dummy_df = pd.get_dummies(df[categorical_lst], drop_first=True)
-    df = pd.concat([df, dummy_df], axis = 1)
+
+    # renaming column values for clarity
+    df["payment_type"] = df["payment_type"].replace({
+        'Mailed check': "Mailed Check", \
+        'Credit card (automatic)': "Credit Card (automatic)", \
+        'Electronic check': "E-Check", \
+       'Bank transfer (automatic)': "Bank Transfer (automatic"}) 
+
+    df["contract_type"] = df["contract_type"].replace({
+        "Month-to-month": "Month-to-Month", "One year": "One Year", "Two year": "Two Year"})
+
+    df["internet_service_type"] = df["internet_service_type"].replace({
+        "Fiber optic": "Fiber Optic", "None": "No internet service"})
     
-    for column in df.columns:
-        if df[column].dtype == "uint8":
-            df[column] = df[column].astype("bool")
+    return df
