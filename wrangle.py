@@ -7,7 +7,6 @@ import env
 from env import user, password, host
 
 
-
 def get_telco_data():
     # editing for "caching" exercise
     filename = "telco.csv"
