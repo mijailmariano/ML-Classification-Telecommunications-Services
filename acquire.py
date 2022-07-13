@@ -1,8 +1,10 @@
-# required modules:
+# importing libraries
 import os
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
+
+from skimpy import clean_columns
 
 import env 
 from env import user, password, host
@@ -66,3 +68,57 @@ def train_validate_test_split(df):
         stratify=train_and_validate.churn)
 
     return train, validate, test
+
+def training_set_split(df):
+    # resplitting the train dataset into smaller train, validate, and test datasets for modeling purposes
+    X_train_and_validate, X_test, y_train_and_validate, y_test = train_test_split(df, df["churn"], random_state=123, test_size=.3)
+    X_train, X_validate, y_train, y_validate = train_test_split(X_train_and_validate, y_train_and_validate, random_state=123, test_size=.2)
+    return X_train, y_train, X_validate, y_validate, X_test, y_test
+
+
+def model_features(df):
+    df = df[[ 
+        'churn', \
+        'customer_id', \
+        'internet_service_type_fiber_optic', \
+        'internet_service_type_dsl', \
+        'internet_service_type_no_internet_service', \
+        'payment_type_credit_card_automatic', \
+        'payment_type_e_check', \
+        'payment_type_mailed_check', \
+        'payment_type_bank_transfer_automatic', \
+        'streaming_movies_no_internet_service', \
+        'streaming_movies_yes', \
+        'streaming_movies_no',
+        'tech_support_no_internet_service', \
+        'tech_support_yes', \
+        'tech_support_no']]
+
+    return df
+
+
+def dummy_columns(df):
+    categorical_lst = [
+        'internet_service_type', \
+        'payment_type', \
+        'contract_type', \
+        'gender', \
+        'partner', \
+        'dependents', \
+        'phone_service', \
+        'multiple_lines', \
+        'online_security', \
+        'online_backup', \
+        'device_protection', \
+        'tech_support', \
+        'streaming_tv', \
+        'streaming_movies', \
+        'paperless_billing']
+
+    dummy_df = pd.get_dummies(df[categorical_lst])
+    # cleaning column names for uniformity
+
+    dummy_df = clean_columns(dummy_df, case = "snake")
+    df = pd.concat([df, dummy_df], axis = 1)
+
+    return df

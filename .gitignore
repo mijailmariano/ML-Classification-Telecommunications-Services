@@ -1,6 +1,4 @@
 env.py
-acquire.py
-prepare.py
 .DS_Store
 .ipynb_checkpoints/
 __pycache__
