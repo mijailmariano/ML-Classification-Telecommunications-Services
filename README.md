@@ -1,11 +1,13 @@
 ## Classification Modeling
-#### Telecommunications ("TELCO") Dataset Analysis
 
-<br>
+#### Telecommunications ("TELCO") Dataset Analysis
+----
 
 ##### Mijail Q. Mariano
 ##### github.com/mijailmariano
-----
+
+<br>
+
 **<u>Project Description & Goals:</u>**
 
 The purpose of this analysis was to explore the telco dataset through visualizations and statistical tests to identify potential influencers of customer churn.
@@ -48,8 +50,6 @@ Below is a file breakdown on how to best navigate this GitHub repository and the
 
 ----
 **<u>Initial Questions and Hypothesis:</u>**
-
-
 
 
 
@@ -119,7 +119,7 @@ Below is a file breakdown on how to best navigate this GitHub repository and the
 
 * **internet_service_type:** Customer’s internet service provider 
   
-  (DSL, Fiber optic, No internet service)
+  (DSL, Fiber Optic, No internet service)
 
 * **online_security:** Whether the customer has online security 
   
