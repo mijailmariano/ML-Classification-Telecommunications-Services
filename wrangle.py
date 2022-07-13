@@ -2,6 +2,7 @@
 import os
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import train_test_split
 
 import env 
 from env import user, password, host
@@ -38,7 +39,7 @@ def clean_telco_data(df):
     # dropping unneeded columns
     df = df.drop(columns=['internet_service_type_id', 'payment_type_id', 'contract_type_id'])
 
-    # renaming column values for clarity
+    # renaming feature/column values for clarity
     df["payment_type"] = df["payment_type"].replace({
         'Mailed check': "Mailed Check", \
         'Credit card (automatic)': "Credit Card (automatic)", \
@@ -52,3 +53,16 @@ def clean_telco_data(df):
         "Fiber optic": "Fiber Optic", "None": "No internet service"})
     
     return df
+
+
+def train_validate_test_split(df):
+    train_and_validate, test = train_test_split(
+    df, test_size=0.2, random_state=123, stratify=df.churn)
+    
+    train, validate = train_test_split(
+        train_and_validate,
+        test_size=0.3,
+        random_state=123,
+        stratify=train_and_validate.churn)
+
+    return train, validate, test
