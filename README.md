@@ -93,11 +93,11 @@ Below is a file breakdown on how to best navigate this GitHub repository and the
 
    Data Science pipeline overview document. Project artifact of the hypothesis tests conducted, classification techniques used for machine learning models, key analysis takeaways, and recommendations.
 
-2. **wrangle.ipynb**
+2. **data_exploration.ipynb**
 
-   Jupyter Notebook used as the initial data acquisition file  which walks-through the process for creating the necessary data acquisition and cleaning functions.
+   Jupyter Notebook used as the data science pipeline file which walks-through the process for creating the necessary data acquisition and cleaning functions.
 
-3. **wrangle.py**
+3. **prepare.py**
 
    Python file with functions needed to import, clean, and manipulate the telco dataset used in this analysis.
 
