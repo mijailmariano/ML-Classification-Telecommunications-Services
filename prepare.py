@@ -84,9 +84,9 @@ def train_validate_test_split(df):
 
 
 def model_features(df):
+    # returns specified features proved statistically significant from testing'
     df = df[[ 
         'churn', \
-        'customer_id', \
         'internet_service_type_fiber_optic', \
         'internet_service_type_dsl', \
         'internet_service_type_no_internet_service', \
