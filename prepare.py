@@ -102,3 +102,21 @@ def model_features(df):
         'tech_support_no']]
 
     return df
+
+def log_features():
+    features = [ 
+    'internet_service_type_fiber_optic', \
+    'internet_service_type_dsl', \
+    'internet_service_type_no_internet_service', \
+    'payment_type_credit_card_automatic', \
+    'payment_type_e_check', \
+    'payment_type_mailed_check', \
+    'payment_type_bank_transfer_automatic', \
+    'streaming_movies_no_internet_service', \
+    'streaming_movies_yes', \
+    'streaming_movies_no',
+    'tech_support_no_internet_service', \
+    'tech_support_yes', \
+    'tech_support_no']
+
+    return features
