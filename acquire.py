@@ -14,11 +14,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 
 
-from prepare import log_features
-
-
-
-
 def get_telco_data():
     # editing for "caching" exercise
     filename = "telco.csv"
@@ -57,6 +52,7 @@ def model_features(df):
 
     return df
 
+
 def log_features():
     features = [ 
     'internet_service_type_fiber_optic', \
@@ -74,7 +70,6 @@ def log_features():
     'tech_support_no']
 
     return features
-
 
 def model_results(X_train, y_train, X_validate, y_validate):
     features = log_features()
