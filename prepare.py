@@ -1,16 +1,13 @@
 # importing libraries
 import os
-from pyexpat import features
+
 import pandas as pd
 from skimpy import clean_columns
+
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-import env
-from env import user, password, host
 
 
 def clean_telco_data(df):

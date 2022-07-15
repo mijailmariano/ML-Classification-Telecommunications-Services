@@ -33,7 +33,7 @@ Given the insights from exploring the telco dataset I design a machine learning 
     <tr>
       <th>Data Feature</th>
       <th>Statistical Test</th>
-      <th>Degress of Freedom</th>
+      <th>Degrees of Freedom</th>
       <th>P-value</th>
     </tr>
   </thead>
@@ -70,17 +70,17 @@ Given the insights from exploring the telco dataset I design a machine learning 
 
 I conclude that there is a statistical association between the features studied in this analysis and customer churn. 
 
-Hypothesis testing with features such as internet_type, tech_support, streaming_movies, and payment_type produced $\chi^2$ results of ~398, ~448, ~205, and ~373 respectively. This indicated to me that there is significant variability in the observed frequency vs. expected frequency also infering a dependency among the features tested and customer churn.
+Hypothesis testing with features such as internet_type, tech_support, streaming_movies, and payment_type produced $\chi^2$ results of ~398, ~448, ~205, and ~373 respectively. This indicated to me that there is significant variability (difference) in the observed frequency vs. expected frequency also infering a dependency among customer churn and features tested.
 
 **<u>Recommendations</u>**
 
-1. Work to improve internet speeds and reliability - specifically across Fiber Optic infrastructure as this option appears to have a stronger statistical relationship to customer churn than the DSL option.
+1. Work to improve internet speeds and reliability - specifically across Telco's Fiber Optic infrastructure as this option appears to have a stronger statistical relationship to customer churn than the DSL option.
    
 2. Encourage internet service customers to opt for the tech_support option in order to help remedy real-time internet issues, and/or provide customers an alternative internet option such as DSL in critical moments.
 
-3. Eliminate Electronic Check ("E-Check") as a monthly payment option as this appears to have a relatively strong statistical association to customer churn & higher churn rates than DSL. This is possibly due to customers taking additional steps such as loging into a third-party website to pay their monthly bill and paying an additional fee for clearing the electronic check. 
+3. Eliminate Electronic Check ("E-Check") as a monthly payment option as this appears to have a relatively strong statistical association to customer churn. This is possibly due to customers taking additional steps such as login into a third-party website to pay their monthly bill and paying an additional fee for clearing the electronic check. 
 
-4. Although streaming movies is very closely associated with whether or not a customer has internet with the company, it's still worth noting that more than 1/3 of all customers have chosen this option. Of which, these customers also churn at less rates than customers who have not chosen to stream movies. 
+4. Although streaming movies is very closely associated with whether or not a customer has internet with the company, it's still worth noting that more than 1/3 of all customers have chosen this option. Of which, these customers also churn at less rates than customers who do not chose to stream movies. 
 
     - My recommendation here would be to partner with leading film / streaming platforms to create selective releases only with the telco company and adverstise to non-movie streaming customers. By diversifying the movie streaming options, you potentially appeal to more customers. 
 
@@ -97,24 +97,25 @@ Below is a file breakdown on how to best navigate this GitHub repository and the
 
    Jupyter Notebook used as the data science pipeline file which walks-through the process for creating the necessary data acquisition and cleaning functions.
 
-3. **prepare.py**
+3. **acquire.py** 
 
-   Python file with functions needed to import, clean, and manipulate the telco dataset used in this analysis.
+    Python file that imports the neccessary telco dataset and subsequent features and outputs for modeling phase in the analysis. **Note:** you must first import the initial telco dataset from MySQL. When passed in the "acquire.get_telco_data()" function, the data is then stored locally as a .csv file and then referenced as a pd.Dataframe thereafter. 
+
+4. **prepare.py**
+
+   Python file with created functions needed to clean, and manipulate the telco dataset used in this analysis.
+
 
 ----
-**<u>Initial Questions and Hypothesis:</u>**
+**<u>Initial Questions for Hypothesis Testing:</u>**
 
-* *Do the current “Internet Options” have an effect on customers’ decision to churn?*
+*Is there a relationship between ```internet``` options and whether or not a customer churns?*
 
+*Is there a relationship between the ```streaming movies``` option and whether or not a customer churns?*
 
-* *Did a customer’s “Tech Support” experience have an impact on their decision to churn?*
+*Is there a relationship between the ```tech support``` option and whether or not a customer churns?*
 
-
-* *Did a customer’s “Payment Type” have an effect on customers’ decision to churn?*
-
-
-* *Does a customer’s ability to “Stream Movies” impact their decision to churn?*
-
+*Is there a relationship between ```monthly payment``` options and whether or not a customer churns?*
 
 
 ----
