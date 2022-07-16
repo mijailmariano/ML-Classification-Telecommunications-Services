@@ -3,4 +3,5 @@ env.py
 .ipynb_checkpoints/
 __pycache__
 telco.csv
-model_testing.ipynb 
+model_testing.ipynb
+model_tests.ipynb
