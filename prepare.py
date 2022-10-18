@@ -9,7 +9,6 @@ from sklearn.model_selection import train_test_split
 
 
 
-
 def clean_telco_data(df):
     # converting columns to proper type 
     df["total_charges"] = pd.to_numeric(df["total_charges"], errors="coerce")
