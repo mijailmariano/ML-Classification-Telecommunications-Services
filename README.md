@@ -1,4 +1,4 @@
-## Classification Modeling
+## Machine Learning Classification Modeling - Predicting and Preventing Customer Attrition in Telecommunication Services
 
 #### Telecommunications ("TELCO") Dataset Analysis
 ----
